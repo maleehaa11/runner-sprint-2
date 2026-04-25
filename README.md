@@ -275,6 +275,28 @@ Meeting 4
 - Next: add environment, make objects look like walls/mazes focus more on UI
 - Problems: struggled with animations linking to player - sorted using AnimationPlayer
 
+sprint 2 meetings:
+
+Meeting 1
+- Since last session: Removed the chaser mechanic completely and cleaned up all related logic so the game loop no longer depends on the unseen force. Began importing external environment assets including fog, walls, and a textured floor.
+- Next: Integrate the new environment into the scene, adjust lighting, and ensure collisions work correctly with the new wall meshes.
+- Problems: Initial issues with environment scale and alignment — walls not matching lane spacing and fog being too dense.
+
+Meeting 2
+- Since last session: Environment successfully added with fog, walls, and floor. Adjusted lighting and collision shapes to match the new assets. Game visually improved and runs smoothly with the new environment.
+- Next: Implement the leaderboard UI and connect it to the GameOver event. Begin structuring the system for saving scores.
+- Problems: Some obstacles clipping into the new walls; required repositioning and adjusting spawn offsets.
+
+Meeting 3
+- Since last session: Leaderboard UI added and dynamically updates after each run. Fixed duplicate GameOver events that caused repeated leaderboard entries. Cleaned up UIManager logic to prevent disappearing text.
+- Next: Implement persistent score saving using a text file and ensure scores load correctly on startup.
+- Problems: Leaderboard entries duplicating due to GameOver firing twice; resolved by restructuring death logic and adding a safety flag.
+
+Meeting 4
+- Since last session: Score saving and loading fully implemented using Godot’s FileAccess. Leaderboard now persists between sessions and loads correctly on startup. UI layout polished and environment finalised.
+- Next: Final testing, bug‑fixing, and preparing documentation for Sprint 2.
+- Problems: Minor issues with file path handling and ensuring the leaderboard clears correctly before repopulating.
+
 ***5. Software Tools & Coding Techniques (5%)***
 
 **Tools Used**
