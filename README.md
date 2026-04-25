@@ -45,10 +45,10 @@ These build on Sprint 1 and include new Sprint 2 features:
 | medium  | HUD  | score,speed  | UI updateable  | score increases  |
 | medium  | environment collapse  | world ends behind player  | ends  | player cannot backtrack  |
 | low  | sound design  | footsteps, coin pickup  | sounds implemented  | trigger at correct events |
-| medium  | chaser  | unseen force  | visiual/audio cues  | player dies if too slow  |removed
+| medium  | chaser  | unseen force  | visiual/audio cues  | player dies if too slow  | removed |
 | medium  | restart system  | restart option once player dies  | screen shows restart option at death  | game restarts  |
-| medium  | leaderboard | saves scores  | shows scores once player dies  | scores shown  |new
-
+| medium  | leaderboard | saves scores  | shows scores once player dies  | scores shown  | new |
+ 
 ***Detailed design, Development and Implementation***
 
 **3.1 Core Game Concept**
