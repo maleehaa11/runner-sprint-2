@@ -5,12 +5,12 @@
 **1.1 User Requirements**
 
 These build on Sprint 1 and include new Sprint 2 features:
-The player must be able to move smoothly between lanes.
-The player must be able to jump and slide with responsive animations.
-The player must see updated score, speed, and game state on the HUD.
-The player must be able to restart the game after death.
-The player must experience increasing difficulty over time.
-The player must be able to interact with new obstacles and pickups.
+- The player must be able to move smoothly between lanes.
+- The player must be able to jump and slide with responsive animations.
+- The player must see updated score, speed, and game state on the HUD.
+- The player must be able to restart the game after death.
+- The player must experience increasing difficulty over time.
+- The player must be able to interact with new obstacles and pickups.
 
 **1.2 System Requirements**
 
@@ -25,6 +25,7 @@ The player must be able to interact with new obstacles and pickups.
 - As a player, I want to move left/right/forward so I can navigate the maze.
 - As a player, I want obstacles to appear unpredictably so the game feels challenging.
 - As a player, I want my score to increase the longer I survive.
+- As a player, I want my scores to save so I can see what my best score is.
 - As a player, I want animations to match my actions so the game feels responsive.
 - As a player, I want coins/pickups to spawn so I can increase my score.
 - As a player, I want to restart the game after dying so I can try again quickly. 
@@ -45,6 +46,7 @@ The player must be able to interact with new obstacles and pickups.
 | low  | sound design  | footsteps, coin pickup  | sounds implemented  | trigger at correct events |
 | medium  | chaser  | unseen force  | visiual/audio cues  | player dies if too slow  |
 | medium  | restart system  | restart option once player dies  | screen shows restart option at death  | game restarts  |
+| medium  | leaderboard | saves scores  | shows scores once player dies  | scores shown  |
 
 ***Detailed design, Development and Implementation***
 
