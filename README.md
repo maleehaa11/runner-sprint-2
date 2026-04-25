@@ -100,6 +100,9 @@ sprint 2:
 - textured floor replacing old CSGBox
 - improved lighting for realism
 
+<img width="340" height="227" alt="image" src="https://github.com/user-attachments/assets/23357c89-71fd-4f5b-b7ad-353b8e7b21ff" />
+
+
 **3.5 Gameplay**
 
 Gameplay Loop
@@ -153,6 +156,9 @@ sprint 2:
 - leaderboard panel
 - score saving
 - improved layout
+<img width="404" height="275" alt="image" src="https://github.com/user-attachments/assets/dd8d3eed-1cc2-4fd3-abf4-ff4eb5598639" />
+
+
 
 **3.9 Technical Challenges**
 
