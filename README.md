@@ -12,6 +12,9 @@ These build on Sprint 1 and include new Sprint 2 features:
 - The player must experience increasing difficulty over time.
 - The player must be able to interact with new obstacles and pickups.
 - The player must be able to see their score on a leaderboard at the end of the game should it be high enough.(new)
+- The system must load external environment assets (walls, fog, floor) without stutter. (new)
+- The system must save and load leaderboard data from a text file. (new)
+- The system must exclude the chaser logic entirely. (updated)
 
 **1.2 System Requirements**
 
@@ -26,11 +29,13 @@ These build on Sprint 1 and include new Sprint 2 features:
 - As a player, I want to move left/right/forward so I can navigate the maze.
 - As a player, I want obstacles to appear unpredictably so the game feels challenging.
 - As a player, I want my score to increase the longer I survive.
-- As a player, I want my scores to save so I can see what my best score is.
+- As a player, I want my scores to save so I can see what my best score is. (new)
 - As a player, I want animations to match my actions so the game feels responsive.
 - As a player, I want coins/pickups to spawn so I can increase my score.
 - As a player, I want to restart the game after dying so I can try again quickly. 
 - As a developer, I want clean collision logic so the game behaves consistently.
+- As a player, I want the environment to feel immersive with fog and walls. (new)
+- As a developer, I want to remove the chaser mechanic to simplify gameplay. (updated)
 
 ***2. scrum backlog - definitions and tests***
 
@@ -45,19 +50,22 @@ These build on Sprint 1 and include new Sprint 2 features:
 | medium  | HUD  | score,speed  | UI updateable  | score increases  |
 | medium  | environment collapse  | world ends behind player  | ends  | player cannot backtrack  |
 | low  | sound design  | footsteps, coin pickup  | sounds implemented  | trigger at correct events |
-| medium  | chaser  | unseen force  | visiual/audio cues  | player dies if too slow  | removed |
+| medium  | chaser  | unseen force  | visiual/audio cues  | removed  | 
 | medium  | restart system  | restart option once player dies  | screen shows restart option at death  | game restarts  |
-| medium  | leaderboard | saves scores  | shows scores once player dies  | scores shown  | new |
+| medium  | leaderboard | saves scores  | shows scores once player dies  | scores shown (new)  | 
+| medium  | environment assests | fog, walls, floor | imported + functional  | environment visible (new)  | 
+| medium  | leaderboard saving | saves to text file | loads on start up  | persistant scores (new)  | 
  
 ***Detailed design, Development and Implementation***
 
 **3.1 Core Game Concept**
 
 Runner is a fast paced, adrenaline-driven endless runner set inside collapsing stone mazes and industrial ruins. The player must escape shifting paths while being chased by an unseen force. The game emphasizes reflexes, pattern recognition, and high-pressure decision-making.
+Sprint 2: Runner is a fast‑paced endless runner set inside collapsing stone mazes and industrial ruins. Originally the player was chased by an unseen force, but this mechanic was removed in Sprint 2 to simplify gameplay and improve performance. The focus is now on reflex‑based navigation, obstacle avoidance, and score mastery.
 
 **3.2 Game Story**
 
-The player awakens inside a massive, ancient labyrinth. The walls shift, and something hunts them from the shadows. Their only goal: run. As the player survives longer, the environment reveals symbols and markings hinting at a forgotten civilization and the reason the maze exists.
+The player awakens inside a massive, ancient labyrinth. The walls shift, and something hunts them from the shadows. Their only goal: run. As the player survives longer, the environment reveals symbols and markings hinting at a forgotten civilization and the reason the maze exists. Sprint 2: updated to remove chaser
 
 **3.3 Characters**
 
@@ -65,13 +73,7 @@ The player awakens inside a massive, ancient labyrinth. The walls shift, and som
 -	Human silhouette with simple but expressive animations
 -	Outfit: reinforced gear 
 -	Represents determination and survival instinct
-•	The Unseen Force
--	Never fully shown
--	Represented through:
--	Screen shake
--	Red warning lights
--	Distant roars
--	Darkness creeping in
+
 
 **3.4 Environments**
 
@@ -92,6 +94,12 @@ Environmental Hazards
 -	Collapsing floors
 -	Maze blocks to enforce one route out
 
+sprint 2:
+- fogvolume for atomspheric depth
+- stone walls imported from external sources
+- textured floor replacing old CSGBox
+- improved lighting for realism
+
 **3.5 Gameplay**
 
 Gameplay Loop
@@ -103,6 +111,12 @@ Gameplay Loop
 5.	Speed increases
 6.	Player eventually fails
 7.	Score recorded → restart
+
+sprint 2:
+- no chaser mechanic
+- more immersive environment
+- leaderboard shown at the end
+- persistant score saving
 
 Motivation Loop
 
@@ -133,9 +147,12 @@ Controls
 -	Right Arrow: Move right
 -	Space: Jump
 -	Down Arrow: Slide
-HUD
-
+- HUD
 -	Score
+sprint 2:
+- leaderboard panel
+- score saving
+- improved layout
 
 **3.9 Technical Challenges**
 
@@ -144,9 +161,13 @@ HUD
 -	Accurate collision detection at high speeds
 -	Implementing collapse timing without lag
 -	Balancing difficulty scaling
--	Ensuring mobile-friendly input mapping
 -	Importing player with correct animations
 -	Ensuring animations work with correct buttons
+-	importing external enviromental assests
+-	fixing collisions
+-	implementing a dyanmic leaderboard
+-	saving/loading leaderboard entries
+-	debugging GameOver firing twice
 
 
 **3.10 Test Plan**
@@ -208,6 +229,10 @@ Evaluates:
 | T08  |  restart system |  press restart button |  game restarts |  works as expected |
 | T09  | input latency  |  press movement keys |  immediate response | works as expected  |
 | T10  | UI updates  | score increases overtime  | UI updates every frame  |  works as expected |
+| T11  | leaderboard updates correctly  | score added | score added to leaderboard if high enough  |  works as expected (new)
+| T12  | scores save to text file  | scores added into a readable text file  | score save  |  works as expected (new) |
+| T13  | scores load on start up  | scores shows on leaderboard  | score is shown before player starts playing |  works as expected (new) |
+| T14  | environment  | environment loads without stutter  | floor, fog, and walls to be seen  |  works as expected (new) |
 
 
 ***4 Project Planning, Management & Documentation***
@@ -251,6 +276,8 @@ Meeting 4
 -	GDScript
 -	Mixamo (sprites + animations)
 -	GitHub (version control)
+-	Quaternius (environment assests)
+-	text file save using FileAccess
 
 ***6. Completion & Testing Against Requirements (15%)***
 
@@ -270,3 +297,6 @@ Playtesting confirms:
 -	Visual feedback is clear
 -	Controls feel intuitive
 -	Performance stable
+-	leaderboard saving
+-	environment assests loading
+
